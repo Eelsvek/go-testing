@@ -1,5 +1,12 @@
 package main
 
-func hello(name string) string {
-	return "Hello, " + name
+const helloPrefix = "Hello, "
+const defaultGreeting = "Hello, World"
+
+func Hello(name string) string {
+	if name == "" {
+		return defaultGreeting
+	}
+
+	return helloPrefix + name
 }
