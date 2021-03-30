@@ -3,7 +3,8 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	assertion := func(t *testing.T, got, want string) {
+	assertion := func(t testing.TB, got, want string) {
+		t.Helper()
 		if got != want {
 			t.Errorf("got %q want %q", got, want)
 		}
