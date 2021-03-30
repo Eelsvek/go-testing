@@ -1,11 +1,19 @@
 package main
 
-const helloPrefix = "Hello, "
+const spanish = "Spanish"
+const englishHello = "Hello, "
+const spanishHello = "Hola, "
 
-func Hello(name string) string {
+func Hello(name string, language string) string {
+	var prefix = englishHello
+
+	if language == spanish {
+		prefix = spanishHello
+	}
+
 	if name == "" {
 		name = "World"
 	}
 
-	return helloPrefix + name
+	return prefix + name
 }
