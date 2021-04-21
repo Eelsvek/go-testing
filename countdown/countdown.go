@@ -4,13 +4,27 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"time"
 )
+
+type ConfigurableSleeper struct {
+	duration time.Duration
+	sleep    func(time.Duration)
+}
+
+func (c *ConfigurableSleeper) Sleep() {
+	c.sleep(c.duration)
+}
+
+type Sleeper interface {
+	Sleep()
+}
 
 const countdownStart = 3
 const finalWord = "Go!"
 
 func main() {
-	sleeper := &DefaultSleeper{}
+	sleeper := &ConfigurableSleeper{1 * time.Second, time.Sleep}
 	Countdown(os.Stdout, sleeper)
 }
 
